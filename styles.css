@@ -9,17 +9,34 @@ html {
   height: 100vh;
 }
 
-header {
-  background-color: #007bff;
-  color: white;
+.xadrez {
+  background-color: #228b22; /* Verde floresta */
+  background-image: linear-gradient(
+      45deg,
+      #000000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000000 75%,
+      #000000
+    ),
+    linear-gradient(
+      45deg,
+      #000000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000000 75%,
+      #000000
+    );
+  background-size: 160px 160px;
+  background-position: 0 0, 80px 80px;
 }
 
-.bg-light {
-  background-color: #f4f4f4 !important;
+.bg-success {
+  background-color: #228b22 !important; /* Verde floresta */
 }
 
-.bg-warning {
-  background-color: #ff9800 !important;
+.bg-danger {
+  background-color: #8b0000 !important; /* Rubro escuro */
 }
 
 section {
@@ -35,16 +52,24 @@ label,
 input,
 textarea {
   margin-bottom: 10px;
+  color: white;
+}
+
+input,
+textarea {
+  background-color: #2c2c2c;
+  color: white;
+  border: 1px solid white;
 }
 
 button {
   padding: 10px;
-  background-color: #007bff;
+  background-color: #000000;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #444444;
 }
