@@ -31,6 +31,7 @@ html {
     );
   background-size: 160px 160px;
   background-position: 0 0, 80px 80px;
+  color: white; /* Cor do texto no tema original */
 }
 
 .bg-success {
@@ -62,7 +63,7 @@ html {
     );
   background-size: 160px 160px;
   background-position: 0 0, 80px 80px;
-  color: #333333;
+  color: #333333; /* Cor do texto no tema cinza com gelo */
 }
 
 .bg-gray {
@@ -85,14 +86,12 @@ form {
 }
 
 label,
-input,
-textarea {
+input {
   margin-bottom: 10px;
   color: white;
 }
 
-input,
-textarea {
+input {
   background-color: #2c2c2c;
   color: white;
   border: 1px solid white;
@@ -115,6 +114,8 @@ button:hover {
   top: 10px;
   right: 10px;
   z-index: 1000;
+  padding: 15px; /* Increase padding for larger button */
+  font-size: 1.2em; /* Increase font size for larger button */
 }
 
 /* Toggle button styles for different themes */
@@ -137,4 +138,10 @@ button:hover {
 .gray-ice-header .btn-danger {
   background-color: #d3d3d3; /* Gelo */
   border-color: #d3d3d3;
+}
+
+.gray-ice-header .text-white,
+.bg-gray .text-white,
+.bg-ice .text-white {
+  color: #333333 !important; /* Ensure text is readable on light background */
 }

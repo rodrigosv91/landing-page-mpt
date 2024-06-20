@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", function () {
   // Função de chamada para ação para "Saiba Mais"
   document
@@ -28,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Coletar dados do formulário
       const nome = document.getElementById("nome").value;
       const email = document.getElementById("email").value;
-      const mensagem = document.getElementById("mensagem").value;
 
       // Simular envio (exemplo: exibir uma mensagem de agradecimento)
       alert(
@@ -56,38 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
       produtosServicos.classList.toggle("bg-gray");
       sobreContato.classList.toggle("bg-ice");
 
-      // Alternar a cor dos botões "Saiba Mais" e "Contato"
       if (header.classList.contains("gray-ice-header")) {
-        ctaButtonSaibaMais.classList.remove("btn-success");
-        ctaButtonSaibaMais.classList.add("btn-secondary");
-        ctaButtonContato.classList.remove("btn-danger");
-        ctaButtonContato.classList.add("btn-light");
+        toggleButton.textContent = "Original Style";
       } else {
-        ctaButtonSaibaMais.classList.remove("btn-secondary");
-        ctaButtonSaibaMais.classList.add("btn-success");
-        ctaButtonContato.classList.remove("btn-light");
-        ctaButtonContato.classList.add("btn-danger");
+        toggleButton.textContent = "Toggle Style";
       }
 
-      // Alternar a cor do botão toggle
-      if (header.classList.contains("gray-ice-header")) {
-        toggleButton.classList.remove("btn-secondary");
-        toggleButton.classList.add("btn-light");
-        toggleButton.innerHTML = "Toggle to Original";
-      } else {
-        toggleButton.classList.remove("btn-light");
-        toggleButton.classList.add("btn-secondary");
-        toggleButton.innerHTML = "Toggle to Gray/Ice";
-      }
-
-      // Alternar a cor do texto na seção 1
-      const headerText = header.querySelectorAll("h1, p");
-      headerText.forEach((text) => {
-        if (header.classList.contains("gray-ice-header")) {
-          text.style.color = "#333333"; // Cor do texto no tema cinza com gelo
-        } else {
-          text.style.color = "white"; // Cor do texto no tema original
-        }
-      });
+      ctaButtonSaibaMais.classList.toggle("btn-dark");
+      ctaButtonContato.classList.toggle("btn-dark");
     });
 });
