@@ -1,5 +1,10 @@
 /* styles.css */
 
+@font-face {
+  font-family: "Demon Slayer";
+  src: url("Demon_Slayer.ttf") format("truetype"); /* Certifique-se de que o caminho para o arquivo da fonte está correto */
+}
+
 body,
 html {
   height: 100%;
@@ -144,4 +149,10 @@ button:hover {
 .bg-gray .text-white,
 .bg-ice .text-white {
   color: #333333 !important; /* Ensure text is readable on light background */
+}
+
+#produtos-servicos p {
+  margin: 0 20%;
+  font-family: "Demon Slayer", Arial, sans-serif; /* Aplica a fonte personalizada */
+  font-size: 2em; /* Dobra o tamanho da fonte */
 }
