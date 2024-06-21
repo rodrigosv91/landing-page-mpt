@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Demon Slayer";
-  src: url("Demon_Slayer.ttf") format("truetype"); /* Certifique-se de que o caminho para o arquivo da fonte está correto */
+  src: url("Demon_Slayer.ttf") format("truetype");
 }
 
 body,
@@ -16,7 +16,7 @@ html {
 }
 
 .xadrez {
-  background-color: #228b22; /* Verde floresta */
+  background-color: #228b22;
   background-image: linear-gradient(
       45deg,
       #000000 25%,
@@ -38,16 +38,15 @@ html {
 }
 
 .bg-success {
-  background-color: #228b22 !important; /* Verde floresta */
+  background-color: #228b22 !important;
 }
 
 .bg-danger {
-  background-color: #8b0000 !important; /* Rubro escuro */
+  background-color: #8b0000 !important;
 }
 
-/* New styles for gray and ice theme */
 .gray-ice-header {
-  background-color: #d3d3d3; /* Cinza claro */
+  background-color: #d3d3d3;
   background-image: linear-gradient(
       45deg,
       #ffffff 25%,
@@ -66,21 +65,21 @@ html {
     );
   background-size: 160px 160px;
   background-position: 0 0, 80px 80px;
-  color: #333333; /* Cor do texto no tema cinza com gelo */
+  color: #333333;
 }
 
 .gray-ice-header h1,
 .gray-ice-header p.lead {
-  color: #333333; /* Cor do texto no tema cinza com gelo */
+  color: #333333;
 }
 
 .bg-gray {
-  background-color: #d3d3d3 !important; /* Cinza claro */
+  background-color: #d3d3d3 !important;
   color: #333333 !important;
 }
 
 .bg-ice {
-  background-color: #dfedfa !important; /* Gelo */
+  background-color: #dfedfa !important;
   color: #333333 !important;
 }
 
@@ -131,7 +130,6 @@ button:hover {
   font-size: 1.2em; /* Increase font size for larger button */
 }
 
-/* Toggle button styles for different themes */
 .gray-ice-header .btn-secondary {
   background-color: #d3d3d3;
   color: #333333;
@@ -142,15 +140,14 @@ button:hover {
   color: #d3d3d3;
 }
 
-/* Custom button styles */
 .btn-custom-rubro {
-  background-color: #8b0000; /* Rubro escuro */
+  background-color: #8b0000;
   border-color: #8b0000;
   color: white;
 }
 
 .btn-custom-green {
-  background-color: #026a15; /* Rubro escuro */
+  background-color: #026a15;
   border-color: #026a15;
   color: white;
 }
@@ -162,7 +159,7 @@ button:hover {
 }
 
 .btn-custom-ice {
-  background-color: #6e85a4; /* Azul claro (Light Steel Blue) */
+  background-color: #6e85a4;
   border-color: #6e85a4;
   color: white;
 }
@@ -170,10 +167,10 @@ button:hover {
 .gray-ice-header .text-white,
 .bg-gray .text-white,
 .bg-ice .text-white {
-  color: #333333 !important; /* Ensure text is readable on light background */
+  color: #333333; /* Ensure text is readable on light background */
 }
 
 #produtos-servicos p {
   margin: 0 20%;
-  font-size: 2em; /* Dobra o tamanho da fonte */
+  font-size: 2em;
 }
