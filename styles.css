@@ -80,7 +80,7 @@ html {
 }
 
 .bg-ice {
-  background-color: #f0f8ff !important; /* Gelo */
+  background-color: #dfedfa !important; /* Gelo */
   color: #333333 !important;
 }
 
@@ -149,10 +149,22 @@ button:hover {
   color: white;
 }
 
+.btn-custom-green {
+  background-color: #026a15; /* Rubro escuro */
+  border-color: #026a15;
+  color: white;
+}
+
+.btn-custom-gray {
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;
+  color: white;
+}
+
 .btn-custom-ice {
-  background-color: #b0c4de; /* Azul claro (Light Steel Blue) */
-  border-color: #b0c4de;
-  color: #333333;
+  background-color: #6e85a4; /* Azul claro (Light Steel Blue) */
+  border-color: #6e85a4;
+  color: white;
 }
 
 .gray-ice-header .text-white,

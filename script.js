@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function toggleButtonClasses() {
     ctaButtonSaibaMais.classList.toggle("btn-custom-rubro");
-    ctaButtonSaibaMais.classList.toggle("btn-custom-ice");
+    ctaButtonSaibaMais.classList.toggle("btn-custom-gray");
     ctaButtonContato.classList.toggle("btn-custom-rubro");
     ctaButtonContato.classList.toggle("btn-custom-ice");
   }
