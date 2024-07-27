@@ -47,6 +47,65 @@ document.addEventListener("DOMContentLoaded", function () {
       .scrollIntoView({ behavior: "smooth" });
   });
 
+  function saveContact(contact) {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contacts.push(contact);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+    renderContacts();
+  }
+
+  function getContacts() {
+    return JSON.parse(localStorage.getItem("contacts")) || [];
+  }
+
+  function updateContact(index, newContact) {
+    const contacts = getContacts();
+    if (contacts[index]) {
+      contacts[index] = newContact;
+      localStorage.setItem("contacts", JSON.stringify(contacts));
+      renderContacts();
+    }
+  }
+
+  function deleteContact(index) {
+    const contacts = getContacts();
+    if (contacts[index]) {
+      contacts.splice(index, 1);
+      localStorage.setItem("contacts", JSON.stringify(contacts));
+      renderContacts();
+    }
+  }
+
+  function renderContacts() {
+    const contacts = getContacts();
+    const contactsContainer = document.getElementById("contacts-container");
+    contactsContainer.innerHTML = "";
+    contacts.forEach((contact, index) => {
+      const contactCard = document.createElement("div");
+      contactCard.className = "contact-card";
+      contactCard.innerHTML = `
+              <span>${contact.nome} (${contact.email})</span>
+              <div>
+                  <button class="btn btn-sm btn-primary" onclick="editContact(${index})">Edit</button>
+                  <button class="btn btn-sm btn-danger" onclick="deleteContact(${index})">Delete</button>
+              </div>
+          `;
+      contactsContainer.appendChild(contactCard);
+    });
+  }
+
+  window.editContact = function (index) {
+    const contacts = getContacts();
+    const contact = contacts[index];
+    const newNome = prompt("Enter new name:", contact.nome);
+    const newEmail = prompt("Enter new email:", contact.email);
+    if (newNome && newEmail) {
+      updateContact(index, { nome: newNome, email: newEmail });
+    }
+  };
+
+  window.deleteContact = deleteContact;
+
   document
     .getElementById("contact-form")
     .addEventListener("submit", function (event) {
@@ -54,11 +113,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const nome = document.getElementById("nome").value;
       const email = document.getElementById("email").value;
+      const contact = { nome, email };
+
+      saveContact(contact);
 
       alert(
         `Obrigado pela mensagem, ${nome}! Entraremos em contato através do email ${email}.`
       );
-
       document.getElementById("contact-form").reset();
     });
+
+  renderContacts();
 });
