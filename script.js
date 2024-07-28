@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const toggleButton = document.getElementById("toggle-style");
       if (header.classList.contains("gray-ice-header")) {
-        toggleButton.textContent = "Original Style";
+        toggleButton.textContent = "Estilo Secundário";
       } else {
-        toggleButton.textContent = "Toggle Style";
+        toggleButton.textContent = "Estilo Original";
       }
 
       const formLabels = document.querySelectorAll("#contact-form label");
@@ -47,6 +47,46 @@ document.addEventListener("DOMContentLoaded", function () {
       .scrollIntoView({ behavior: "smooth" });
   });
 
+  function saveContact(contact) {
+    localStorage.setItem("contact", JSON.stringify(contact));
+    toggleContactForm(false);
+    renderContact(contact);
+  }
+
+  function getContact() {
+    return JSON.parse(localStorage.getItem("contact"));
+  }
+
+  function updateContact(newContact) {
+    localStorage.setItem("contact", JSON.stringify(newContact));
+    renderContact(newContact);
+  }
+
+  function deleteContact() {
+    localStorage.removeItem("contact");
+    toggleContactForm(true);
+  }
+
+  function renderContact(contact) {
+    document.getElementById("edit-nome").value = contact.nome;
+    document.getElementById("edit-email").value = contact.email;
+  }
+
+  function toggleContactForm(showForm) {
+    const form = document.getElementById("contact-form");
+    const editDeleteContainer = document.getElementById(
+      "edit-delete-container"
+    );
+
+    if (showForm) {
+      form.classList.remove("d-none");
+      editDeleteContainer.classList.add("d-none");
+    } else {
+      form.classList.add("d-none");
+      editDeleteContainer.classList.remove("d-none");
+    }
+  }
+
   document
     .getElementById("contact-form")
     .addEventListener("submit", function (event) {
@@ -54,11 +94,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const nome = document.getElementById("nome").value;
       const email = document.getElementById("email").value;
+      const contact = { nome, email };
+
+      saveContact(contact);
 
       alert(
         `Obrigado pela mensagem, ${nome}! Entraremos em contato através do email ${email}.`
       );
-
       document.getElementById("contact-form").reset();
     });
+
+  document
+    .getElementById("update-contact")
+    .addEventListener("click", function () {
+      const nome = document.getElementById("edit-nome").value;
+      const email = document.getElementById("edit-email").value;
+      if (nome && email) {
+        updateContact({ nome, email });
+        alert(`Contato atualizado para: ${nome} (${email})`);
+      } else {
+        alert("Nome e email são obrigatórios.");
+      }
+    });
+
+  document
+    .getElementById("delete-contact")
+    .addEventListener("click", function () {
+      deleteContact();
+      alert("Contato deletado. Por favor, envie um novo contato.");
+    });
+
+  const existingContact = getContact();
+  if (existingContact) {
+    toggleContactForm(false);
+    renderContact(existingContact);
+  } else {
+    toggleContactForm(true);
+  }
 });

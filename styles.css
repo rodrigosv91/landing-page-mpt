@@ -1,13 +1,8 @@
-@font-face {
-  font-family: "Demon Slayer";
-  src: url("Demon_Slayer.ttf") format("truetype");
-}
-
 body,
 html {
   height: 100%;
   margin: 0;
-  font-family: "Demon Slayer", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   color: white;
 }
 
@@ -90,6 +85,24 @@ section {
   box-sizing: border-box;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 #produtos-servicos p {
   margin: 0 5%;
   font-size: 1.5em;
@@ -138,12 +151,6 @@ input {
   background-color: #2c2c2c;
   color: white;
   border: 1px solid white;
-}
-
-.gray-ice-header input {
-  color: #333333;
-  background-color: #e0e0e0;
-  border: 1px solid #333333;
 }
 
 button {
@@ -205,4 +212,33 @@ button:hover {
 .bg-gray .text-white,
 .bg-ice .text-white {
   color: #333333;
+}
+
+#contacts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-card {
+  background-color: #f8f9fa;
+  color: #333333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-card button {
+  margin-left: 10px;
+}
+
+.d-none {
+  display: none;
 }
