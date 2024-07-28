@@ -17,7 +17,7 @@
     >
       <div class="position-fixed top-right p-3">
         <button id="toggle-style" class="btn btn-sm btn-secondary">
-          Toggle Style
+          Estilo Original
         </button>
       </div>
       <h1>Katanas Japonesas</h1>
@@ -75,13 +75,32 @@
         </div>
         <button type="submit" class="btn btn-dark">Enviar</button>
       </form>
-    </section>
-    <section
-      id="lista-contatos"
-      class="container-fluid d-flex flex-column justify-content-center align-items-center vh-100 bg-light text-dark"
-    >
-      <h2 class="text-center">Lista de Contatos</h2>
-      <div id="contacts-container" class="w-75"></div>
+      <div
+        id="edit-delete-container"
+        class="d-none mx-auto"
+        style="max-width: 500px"
+      >
+        <div class="form-group">
+          <label for="edit-nome">Nome:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="edit-nome"
+            name="edit-nome"
+          />
+        </div>
+        <div class="form-group">
+          <label for="edit-email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="edit-email"
+            name="edit-email"
+          />
+        </div>
+        <button id="update-contact" class="btn btn-primary">Atualizar</button>
+        <button id="delete-contact" class="btn btn-danger">Deletar</button>
+      </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

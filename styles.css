@@ -238,3 +238,7 @@ button:hover {
 .contact-card button {
   margin-left: 10px;
 }
+
+.d-none {
+  display: none;
+}

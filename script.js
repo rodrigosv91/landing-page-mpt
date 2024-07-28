@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const toggleButton = document.getElementById("toggle-style");
       if (header.classList.contains("gray-ice-header")) {
-        toggleButton.textContent = "Original Style";
+        toggleButton.textContent = "Estilo Secundário";
       } else {
-        toggleButton.textContent = "Toggle Style";
+        toggleButton.textContent = "Estilo Original";
       }
 
       const formLabels = document.querySelectorAll("#contact-form label");
@@ -48,63 +48,44 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function saveContact(contact) {
-    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-    contacts.push(contact);
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-    renderContacts();
+    localStorage.setItem("contact", JSON.stringify(contact));
+    toggleContactForm(false);
+    renderContact(contact);
   }
 
-  function getContacts() {
-    return JSON.parse(localStorage.getItem("contacts")) || [];
+  function getContact() {
+    return JSON.parse(localStorage.getItem("contact"));
   }
 
-  function updateContact(index, newContact) {
-    const contacts = getContacts();
-    if (contacts[index]) {
-      contacts[index] = newContact;
-      localStorage.setItem("contacts", JSON.stringify(contacts));
-      renderContacts();
+  function updateContact(newContact) {
+    localStorage.setItem("contact", JSON.stringify(newContact));
+    renderContact(newContact);
+  }
+
+  function deleteContact() {
+    localStorage.removeItem("contact");
+    toggleContactForm(true);
+  }
+
+  function renderContact(contact) {
+    document.getElementById("edit-nome").value = contact.nome;
+    document.getElementById("edit-email").value = contact.email;
+  }
+
+  function toggleContactForm(showForm) {
+    const form = document.getElementById("contact-form");
+    const editDeleteContainer = document.getElementById(
+      "edit-delete-container"
+    );
+
+    if (showForm) {
+      form.classList.remove("d-none");
+      editDeleteContainer.classList.add("d-none");
+    } else {
+      form.classList.add("d-none");
+      editDeleteContainer.classList.remove("d-none");
     }
   }
-
-  function deleteContact(index) {
-    const contacts = getContacts();
-    if (contacts[index]) {
-      contacts.splice(index, 1);
-      localStorage.setItem("contacts", JSON.stringify(contacts));
-      renderContacts();
-    }
-  }
-
-  function renderContacts() {
-    const contacts = getContacts();
-    const contactsContainer = document.getElementById("contacts-container");
-    contactsContainer.innerHTML = "";
-    contacts.forEach((contact, index) => {
-      const contactCard = document.createElement("div");
-      contactCard.className = "contact-card";
-      contactCard.innerHTML = `
-              <span>${contact.nome} (${contact.email})</span>
-              <div>
-                  <button class="btn btn-sm btn-primary" onclick="editContact(${index})">Edit</button>
-                  <button class="btn btn-sm btn-danger" onclick="deleteContact(${index})">Delete</button>
-              </div>
-          `;
-      contactsContainer.appendChild(contactCard);
-    });
-  }
-
-  window.editContact = function (index) {
-    const contacts = getContacts();
-    const contact = contacts[index];
-    const newNome = prompt("Enter new name:", contact.nome);
-    const newEmail = prompt("Enter new email:", contact.email);
-    if (newNome && newEmail) {
-      updateContact(index, { nome: newNome, email: newEmail });
-    }
-  };
-
-  window.deleteContact = deleteContact;
 
   document
     .getElementById("contact-form")
@@ -123,5 +104,31 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("contact-form").reset();
     });
 
-  renderContacts();
+  document
+    .getElementById("update-contact")
+    .addEventListener("click", function () {
+      const nome = document.getElementById("edit-nome").value;
+      const email = document.getElementById("edit-email").value;
+      if (nome && email) {
+        updateContact({ nome, email });
+        alert(`Contato atualizado para: ${nome} (${email})`);
+      } else {
+        alert("Nome e email são obrigatórios.");
+      }
+    });
+
+  document
+    .getElementById("delete-contact")
+    .addEventListener("click", function () {
+      deleteContact();
+      alert("Contato deletado. Por favor, envie um novo contato.");
+    });
+
+  const existingContact = getContact();
+  if (existingContact) {
+    toggleContactForm(false);
+    renderContact(existingContact);
+  } else {
+    toggleContactForm(true);
+  }
 });
